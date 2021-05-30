@@ -1,5 +1,6 @@
 import React from 'react';
 import Hello from './Hello';
+import Wrapper from './Wrapper';
 import './App.css';
 
 
@@ -16,8 +17,10 @@ function App() {
     <>
       {/* 주석은 화면에 보이지 않습니다 */}
       /* 중괄호로 감싸지 않으면 화면에 보입니다 */
-      <Hello name="react" color="red"/>
-      <Hello color="pink"/>
+      <Wrapper>
+        <Hello name="react" color="red"/>
+        <Hello color="pink"/>
+      </Wrapper>
       <div style={style}>{name}</div>
       <div className="gray-box"></div>
     </>

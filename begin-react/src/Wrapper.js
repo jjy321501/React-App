@@ -7,7 +7,9 @@ function Wrapper(){
     };
     return(
         <div style={style}>
-            
+
         </div>
     )
 }
+
+export default Wrapper;
