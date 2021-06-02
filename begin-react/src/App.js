@@ -2,6 +2,7 @@ import React from 'react';
 import Hello from './Hello';
 import Wrapper from './Wrapper';
 import './App.css';
+import Counter from './Counter';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Hello name="react" color="red" isSpecial={true}/*{true} 를 생략하면 true 가 default 값*//>
         <Hello color="pink"/>
       </Wrapper>
+      <Counter/>
      {/*  <div style={style}>{name}</div>
       <div className="gray-box"></div> */}
     </>
