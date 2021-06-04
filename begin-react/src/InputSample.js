@@ -1,21 +1,35 @@
 import React, {useState} from 'react';
 
 function InputSample() {
-    const [text, setText] = useState('');
+    const [inputs, setInputs] = useState({
+        name: '',
+        nickname: ''
+    });
+
+    const [name, nickname] = inputs; // 비구조화 할당을 통해 값 추출
 
     const onChange = (e) => {
-        setText(e.target.value);
+        const {value, name} = e.target;// 우선 e.target 에서 name, value 를 추출
+        setInputs ({
+            ...inputs,//기존의 input 객체를 복사한 뒤
+            [name]:value //name 키를 가진 값을 value 로 설정
+        });
     }
     const onReset = () => {
-        setText('');
+        setInputs({
+            name: '',
+            nickname: '',
+        })
     };
 
     return(
         <div>
-            <input onChange={onChange} value={text}/>
+            <input placeholder="이름" onChange={onChange} value={name}/>
+            <input placeholder="닉네임" onChange={onChange} value={nickname}/>
             <button onClick={onReset}>초기화</button>
             <div>
-                <b>값: {text}</b>
+                <b>값:  </b>
+                이름 (닉네임)
             </div>
         </div> 
     )
