@@ -4,6 +4,7 @@ import Wrapper from './Wrapper';
 import './App.css';
 import Counter from './Counter';
 import InputSample from './InputSample';
+import UserList from './UserList';
 
 function App() {
   /* const name = 'react';
@@ -24,6 +25,7 @@ function App() {
       </Wrapper>
       <Counter/>
       <InputSample/>
+      <UserList/>
      {/*  <div style={style}>{name}</div>
       <div className="gray-box"></div> */}
     </>
