@@ -55,6 +55,7 @@ function App() {
     };
     //Spread 방식
     /* setUsers([...users, user]); */
+    //Concat 방식
     setUsers(users.concat(user));
 
     setInputs({
