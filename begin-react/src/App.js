@@ -64,6 +64,11 @@ function App() {
     });
     nextId.current += 1;
   };
+  const onRemove = id => {
+    //user.id 가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듬
+    // = user.id 가 id 인것을 제거함
+    setUsers(users.filter(user => user.id !== id));//불변성 지키면서 배열에서 제거하기위해 filter 배열 내장함수를 사용
+  };
 
   return (//쓰이는 곳에서 값을 정한다 => props(부모)
     <>
@@ -81,7 +86,7 @@ function App() {
         onChange={onChange}
         onCreate={onCreate}
       />
-      <UserList users={users}/>
+      <UserList users={users} onRemove={onRemove}/>
      {/*  <div style={style}>{name}</div>
       <div className="gray-box"></div> */}
     </>
