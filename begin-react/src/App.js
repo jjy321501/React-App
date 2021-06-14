@@ -32,17 +32,20 @@ function App() {
     {
         id:1,
         username:'velopert',
-        email:'public.velopert@gmail.com'
+        email:'public.velopert@gmail.com',
+        active:true
     },
     {
         id:2,
         username:'tester',
-        email:'tester@example.com'        
+        email:'tester@example.com',
+        active:false
     },
     {
         id:3,
         username:'liz',
-        email:'liz@example.com'
+        email:'liz@example.com',
+        active:false
     }
   ]);
 
@@ -69,7 +72,13 @@ function App() {
     // = user.id 가 id 인것을 제거함
     setUsers(users.filter(user => user.id !== id));//불변성 지키면서 배열에서 제거하기위해 filter 배열 내장함수를 사용
   };
-
+  const onToggle = id => {
+    setUsers(
+      users.map(user =>
+        user.id === id ? { ...user, active: !user.active } : user
+      )
+    );
+  };
   return (//쓰이는 곳에서 값을 정한다 => props(부모)
     <>
       {/* 주석은 화면에 보이지 않습니다 */}
@@ -86,7 +95,7 @@ function App() {
         onChange={onChange}
         onCreate={onCreate}
       />
-      <UserList users={users} onRemove={onRemove}/>
+      <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
      {/*  <div style={style}>{name}</div>
       <div className="gray-box"></div> */}
     </>
