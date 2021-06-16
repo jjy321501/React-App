@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react';
-
+//useEffect 라는 Hook 사용하여 컴포넌트가 mount, unmount, update(props 가 변경 시) 될 때 처리방법 
 function User({ user ,onRemove,onToggle }) {
 
     useEffect(() => {
         console.log('user 값이 설정됨');
         console.log(user);
         return () => {
-            console.log('user 가 바뀌기 전');
+            console.log('usser 가 바뀌기 전');
             console.log(user);
         };
     },[user]);
-
+    //useEffect 사용 시 첫 파라미터는 함수, 두번째는 의존값이 들어있는 배열 (deps) 를 넣는다
+    //만약 비운다면 컴포넌트가 처음 나타날때만 useEffect 에 등록한 함수가 호출된다.
     return (
         <div>
             <b
