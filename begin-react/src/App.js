@@ -1,4 +1,4 @@
-import React,{useRef,useState} from 'react';
+import React,{useRef,useState,useMemo} from 'react';
 import Hello from './Hello';
 import Wrapper from './Wrapper';
 import './App.css';
@@ -6,6 +6,11 @@ import Counter from './Counter';
 import InputSample from './InputSample';
 import UserList from './UserList';
 import CreateUser from './CreateUser';
+//active 값이 true 인 사용자의 수를 세어서 화면에 렌더링
+function countActiveUsers(users){
+  console.log('활성 사용자 수를 세는중...');
+  return users.filter(user => user.active).length;
+}
 
 function App() {
   /* const name = 'react';
@@ -79,6 +84,7 @@ function App() {
       )
     );
   };
+  const count = useMemo(() => countActiveUsers(users),[users]);
   return (//쓰이는 곳에서 값을 정한다 => props(부모)
     <>
       {/* 주석은 화면에 보이지 않습니다 */}
@@ -98,6 +104,7 @@ function App() {
       <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
      {/*  <div style={style}>{name}</div>
       <div className="gray-box"></div> */}
+      <div>활성 사용자 수 : {count}</div>
     </>
   );
 }
