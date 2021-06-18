@@ -1,4 +1,4 @@
-import React,{useRef,useState,useMemo} from 'react';
+import React,{useRef, useState, useMemo, useCallback} from 'react';
 import Hello from './Hello';
 import Wrapper from './Wrapper';
 import './App.css';
@@ -6,6 +6,7 @@ import Counter from './Counter';
 import InputSample from './InputSample';
 import UserList from './UserList';
 import CreateUser from './CreateUser';
+
 //active 값이 true 인 사용자의 수를 세어서 화면에 렌더링
 function countActiveUsers(users){
   console.log('활성 사용자 수를 세는중...');
@@ -55,7 +56,7 @@ function App() {
   ]);
 
   const nextId = useRef(4);
-  const onCreate = () => { 
+  const onCreate = useCallback(() => { 
     const user = {
       id: nextId.current,
       username,
@@ -71,19 +72,25 @@ function App() {
       email:''
     });
     nextId.current += 1;
-  };
-  const onRemove = id => {
-    //user.id 가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듬
-    // = user.id 가 id 인것을 제거함
-    setUsers(users.filter(user => user.id !== id));//불변성 지키면서 배열에서 제거하기위해 filter 배열 내장함수를 사용
-  };
-  const onToggle = id => {
-    setUsers(
-      users.map(user =>
-        user.id === id ? { ...user, active: !user.active } : user
-      )
-    );
-  };
+  },[users, username, email]);
+  const onRemove = useCallback(
+    id => {
+      //user.id 가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듬
+      // = user.id 가 id 인것을 제거함
+      setUsers(users.filter(user => user.id !== id));//불변성 지키면서 배열에서 제거하기위해 filter 배열 내장함수를 사용
+    },  
+    [users]
+  );
+  const onToggle = useCallback(
+    id => {
+      setUsers(
+        users.map(user =>
+          user.id === id ? { ...user, active: !user.active } : user
+        )
+      );
+    },
+    [users]
+  );
   const count = useMemo(() => countActiveUsers(users),[users]);
   return (//쓰이는 곳에서 값을 정한다 => props(부모)
     <>
