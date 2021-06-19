@@ -56,7 +56,8 @@ function App() {
   ]);
 
   const nextId = useRef(4);
-  const onCreate = useCallback(() => { 
+  //함수형 업데이트 (리렌더링 최적화)
+  const onCreate = useCallback(id => { 
     const user = {
       id: nextId.current,
       username,
@@ -72,15 +73,15 @@ function App() {
       email:''
     });
     nextId.current += 1;
-  },[users, username, email]);
+  },[username, email]);
+  //함수형 업데이트 (리렌더링 최적화)
   const onRemove = useCallback(
     id => {
       //user.id 가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듬
       // = user.id 가 id 인것을 제거함
       setUsers(users.filter(user => user.id !== id));//불변성 지키면서 배열에서 제거하기위해 filter 배열 내장함수를 사용
-    },  
-    [users]
-  );
+    },[]);
+  //함수형 업데이트 (리렌더링 최적화)
   const onToggle = useCallback(
     id => {
       setUsers(
@@ -88,9 +89,7 @@ function App() {
           user.id === id ? { ...user, active: !user.active } : user
         )
       );
-    },
-    [users]
-  );
+    },[]);
   const count = useMemo(() => countActiveUsers(users),[users]);
   return (//쓰이는 곳에서 값을 정한다 => props(부모)
     <>

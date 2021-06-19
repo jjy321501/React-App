@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 //useEffect 라는 Hook 사용하여 컴포넌트가 mount, unmount, update(props 가 변경 시) 될 때 처리방법 
+//함수형 업데이트 (리렌더링 최적화)
 const User = React.memo(function User({ user ,onRemove,onToggle }){
 
     useEffect(() => {
