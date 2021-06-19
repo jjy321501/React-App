@@ -1,6 +1,7 @@
 import React from 'react';
 //이번 컴포넌트에서는 상태관리를 App에서 하게하고, input의 값, 이벤트로 등록할 함수들을 props로 넘겨받아 사용
-function CreateUser ({username, email, onChange, onCreate}){
+//함수형 업데이트 (리렌더링 최적화)
+const CreateUser = ({username, email, onChange, onCreate}) => {
     return (
         <div>
             <input
