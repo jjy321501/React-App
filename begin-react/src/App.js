@@ -27,13 +27,13 @@ function App() {
     email:''
   });
   const {username, email} = inputs;
-  const onChange = e => {
-    const {name, value} = e.target
-    setInputs({
+  const onChange = useCallback(e => {
+    const {name, value} = e.target;
+    setInputs(inputs => ({
       ...inputs,
       [name]:value
-    });
-  };
+    }));
+  },[]);
   const [users,setUsers] = useState([
     {
         id:1,
@@ -57,7 +57,7 @@ function App() {
 
   const nextId = useRef(4);
   //함수형 업데이트 (리렌더링 최적화)
-  const onCreate = useCallback(id => { 
+  const onCreate = useCallback(() => { 
     const user = {
       id: nextId.current,
       username,
