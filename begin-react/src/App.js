@@ -6,6 +6,12 @@ import Counter from './Counter';
 import InputSample from './InputSample';
 import UserList from './UserList';
 import CreateUser from './CreateUser';
+/*
+  useState => 컴포넌트에서 관리하는 값이 하나거나, 단순한 문자 또는 boolean 값
+
+  useReducer => 컴포넌트에서 관리하는 값이 여러개가 되거나 상태의 구조가 복잡해지는 경우 
+*/
+
 
 //active 값이 true 인 사용자의 수를 세어서 화면에 렌더링
 function countActiveUsers(users){
