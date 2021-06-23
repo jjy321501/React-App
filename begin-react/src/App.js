@@ -6,6 +6,8 @@ import Counter from './Counter';
 import InputSample from './InputSample';
 import UserList from './UserList';
 import CreateUser from './CreateUser';
+import useInputs from './hooks/useInputs';
+
 /*
   useState => 컴포넌트에서 관리하는 값이 하나거나, 단순한 문자 또는 boolean 값
 
@@ -86,20 +88,24 @@ function App() {
     fontSize: 24, // 기본 단위 px
     padding: '1rem' // 다른 단위 사용 시 문자열로 설정
   } */
+  const [{username, email}, onChange, reset] = useInputs({
+    username:'',
+    email:''
+  });
   const [state , dispatch] = useReducer(reducer, initialState);
   const nextId = useRef(4);
 
   const {users} = state;
-  const {username, email} = state.inputs;
+
   
-  const onChange = useCallback(e => {
+  /* const onChange = useCallback(e => {
     const {name, value} = e.target;
     dispatch({
       type: 'CHANGE_INPUT',
       name,
       value
     });
-  },[]);
+  },[]); */
 
   //함수형 업데이트 (리렌더링 최적화)
   const onCreate = useCallback(() => { 
