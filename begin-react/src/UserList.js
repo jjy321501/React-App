@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
+import UserDispatch from './App';
+
 //useEffect 라는 Hook 사용하여 컴포넌트가 mount, unmount, update(props 가 변경 시) 될 때 처리방법 
 //함수형 업데이트 (리렌더링 최적화)
-const User = React.memo(function User({ user ,onRemove,onToggle }){
+const User = React.memo(function User({ user }){
 
     useEffect(() => {
         console.log('user 값이 설정됨');
@@ -20,17 +22,17 @@ const User = React.memo(function User({ user ,onRemove,onToggle }){
                     cursor: 'pointer',
                     color: user.active ? 'green' : 'black'
                 }}
-                onClick={() => onToggle(user.id)}
+                onClick={() => {dispatchEvent({ type: 'TOGGLE_USER', id: user.id})}}
             >
                 {user.username}
             </b>
             <span>({user.email})</span>
-            <button onClick={() => onRemove(user.id)}>삭제</button>
+            <button onClick={() => {dispatchEvent({ type: 'REMOVE_USER', id: user.id})}}>삭제</button>
         </div>
     );
 });
 
-function UserList({users,onRemove,onToggle}){
+function UserList({users}){
     
     return (
         <div>
@@ -41,8 +43,6 @@ function UserList({users,onRemove,onToggle}){
                 <User 
                     user={user} 
                     key={user.id} 
-                    onRemove={onRemove} 
-                    onToggle={onToggle}
                 />//react에서 배열을 렌더링시 key props를 설정해야함(없다면 index)
             ))}
         </div>

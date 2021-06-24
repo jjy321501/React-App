@@ -80,6 +80,9 @@ function reducer(state, action){
   }
 }
 
+// UserDispatch 라는 이름으로 내보내준다.
+export const UserDispatch = React.createContext(null);
+
 function App() {
   /* const name = 'react';
   const style = {
@@ -88,7 +91,7 @@ function App() {
     fontSize: 24, // 기본 단위 px
     padding: '1rem' // 다른 단위 사용 시 문자열로 설정
   } */
-  const [{username, email}, onChange, reset] = useInputs({
+  const [{username, email}, onChange, onReset] = useInputs({
     username:'',
     email:''
   });
@@ -127,22 +130,7 @@ function App() {
       email:''
     }); */
     nextId.current += 1;
-  },[username, email]);
-  
-  //함수형 업데이트 (리렌더링 최적화)
-  const onToggle = useCallback(id => {
-    dispatch({
-      type: 'TOGGLE_USER',
-      id
-    });
-  },[]);
-  //함수형 업데이트 (리렌더링 최적화)
-  const onRemove = useCallback(id => {
-    dispatch({
-      type:'REMOVE_USER',
-      id
-    });
-  },[]);
+  },[username, email,onReset]);
 
   const count = useMemo(() => countActiveUsers(users),[users]);
   return (//쓰이는 곳에서 값을 정한다 => props(부모)
@@ -155,16 +143,18 @@ function App() {
       </Wrapper>
       <Counter/>
       <InputSample/>
+      <UserDispatch.Provider value={dispatch}>
       <CreateUser
         username={username}
         email={email}
         onChange={onChange}
         onCreate={onCreate}
       />
-      <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
+      <UserList users={users}/>
      {/*  <div style={style}>{name}</div>
       <div className="gray-box"></div> */}
       <div>활성 사용자 수 : {count}</div>
+      </UserDispatch.Provider>
     </>
   );
 }
