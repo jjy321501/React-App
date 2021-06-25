@@ -7,6 +7,7 @@ import InputSample from './InputSample';
 import UserList from './UserList';
 import CreateUser from './CreateUser';
 import useInputs from './hooks/useInputs';
+import produce from 'immer';
 
 /*
   useState => 컴포넌트에서 관리하는 값이 하나거나, 단순한 문자 또는 boolean 값
@@ -50,31 +51,20 @@ const initialState = {
 
 function reducer(state, action){
   switch (action.type){
-    case 'CHANGE_INPUT':
-      return{
-        ...state,
-        inputs:{
-          ...state.inputs,
-          [action.name]: action.value
-        }
-      };
     case 'CREATE_USER':
-      return {
-        inputs:initialState.inputs,
-        users: state.users.concat(action.user)
-      };
+      return produce(state, draft => {
+        draft.users.push(action.user);
+      });
     case 'TOGGLE_USER':
-      return{
-        ...state,
-        users:state.users.map(user =>
-          user.id === action.id ? { ...user, active: !user.active } : user  
-        )
-      };
+      return produce(state, draft => {
+        const user = draft.users.find(user => user.id === action.id);
+        user.active = !user.active;
+      });
     case 'REMOVE_USER':
-      return {
-        ...state,
-        users: state.users.filter( user => user.id !== action.id)
-      };
+      return produce(state, draft => {
+        const index = draft.users.findIndex(user => user.id === action.id);
+        draft.users.splice(index, 1);
+      });
     default:
       return state;
   }
@@ -111,7 +101,7 @@ function App() {
   },[]); */
 
   //함수형 업데이트 (리렌더링 최적화)
-  const onCreate = useCallback(() => { 
+  /* const onCreate = useCallback(() => { 
     dispatch({
       type:'CREATE_USER',
       user:{
@@ -120,7 +110,7 @@ function App() {
         email
       }
     });
-    //Spread 방식
+   */  //Spread 방식
     /* setUsers([...users, user]); */
     //Concat 방식
     /* setUsers(users.concat(user));
@@ -129,8 +119,8 @@ function App() {
       username:'',
       email:''
     }); */
-    nextId.current += 1;
-  },[username, email,onReset]);
+    /* nextId.current += 1;
+  },[username, email,onReset]); */
 
   const count = useMemo(() => countActiveUsers(users),[users]);
   return (//쓰이는 곳에서 값을 정한다 => props(부모)
@@ -148,7 +138,6 @@ function App() {
         username={username}
         email={email}
         onChange={onChange}
-        onCreate={onCreate}
       />
       <UserList users={users}/>
      {/*  <div style={style}>{name}</div>
