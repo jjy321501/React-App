@@ -10,9 +10,9 @@ import useInputs from './hooks/useInputs';
 import produce from 'immer';
 
 /*
-  useState => 컴포넌트에서 관리하는 값이 하나거나, 단순한 문자 또는 boolean 값
+  useState => 컴포넌트에서 관리하는 값이 하나거나, 단순한 문자 또는 Boolean 값
 
-  useReducer => 컴포넌트에서 관리하는 값이 여러개가 되거나 상태의 구조가 복잡해지는 경우 
+  useReducer => 컴포넌트에서 관리하는 값이 여러 개가 되거나 상태의 구조가 복잡해지는 경우 
 */
 
 
@@ -134,11 +134,7 @@ function App() {
       <Counter/>
       <InputSample/>
       <UserDispatch.Provider value={dispatch}>
-      <CreateUser
-        username={username}
-        email={email}
-        onChange={onChange}
-      />
+      <CreateUser/>
       <UserList users={users}/>
      {/*  <div style={style}>{name}</div>
       <div className="gray-box"></div> */}
