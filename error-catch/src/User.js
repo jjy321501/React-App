@@ -2,9 +2,9 @@ import { setUseProxies } from 'immer';
 import React from 'react';
 
 function Users({ users, onToggle }) {
-    if(!users) {
+    /* if(!users) {
         return null;
-    }
+    } */
 
     return (
         <ul>
