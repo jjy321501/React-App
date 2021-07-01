@@ -3,13 +3,15 @@ import './App.scss';
 import Button from './components/Button';
 
 function App() {
-  return(
+  return (
     <div className="App">
       <div className="buttons">
-        <button>Button</button>
+        <Button size="large">BUTTON</Button>
+        <Button>BUTTON</Button>
+        <Button size="small">BUTTON</Button>
       </div>
     </div>
-  );  
+  );
 }
 
 export default App;

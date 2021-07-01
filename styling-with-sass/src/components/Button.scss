@@ -1,25 +1,46 @@
-$blue: #228be6; //주석 선언
+$blue: #228be6;
 
 .Button {
-    display: inline-flex;
-    color: white;
-    font-weight: bold;
-    outline: none;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
+  display: inline-flex;
+  color: white;
+  font-weight: bold;
+  outline: none;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
 
+  // 사이즈 관리
+  &.large {
+    height: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1.25rem;
+  }
+
+  &.medium {
     height: 2.25rem;
     padding-left: 1rem;
     padding-right: 1rem;
     font-size: 1rem;
+  }
 
-    background: $blue; //주석사용
-    &:hover {
-        background: lighten($blue, 10%); //색상 10% 밝게
-    }
+  &.small {
+    height: 1.75rem;
+    font-size: 0.875rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 
-    &:active {
-        background: darken($blue, 10%); //색상 10% 어둡게
-    }
+  background: $blue;
+  &:hover {
+    background: lighten($blue, 10%);
+  }
+
+  &:active {
+    background: darken($blue, 10%);
+  }
+  // .Button + .Button 을 의미한다.
+  & + & {
+      margin-left: 1rem;
+  }
 }
