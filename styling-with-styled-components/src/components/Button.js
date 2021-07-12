@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { darken, lighten } from 'polished';
 
 const StyledButton = styled.button`
@@ -19,13 +19,18 @@ const StyledButton = styled.button`
     font-size: 1rem;
 
     /* 색상 */
-    background: #228be6;
-    &:hover {
-        background: ${lighten(0.1, '#339af0')};
-    }
-    &:active {
-        background: ${darken(0.1, '#1c7ed6')};
-    }
+    ${props => {
+        const selected = props.theme.palette[props.color];
+        return css`
+            background: ${selected};
+            &:hover {
+                background: ${lighten(0.1, selected)};
+            }
+            &:active {
+                background: ${darken(0.1, selected)};
+            }
+        `;
+    }}
 
     /* 기타 */
     & + & {
@@ -36,5 +41,9 @@ const StyledButton = styled.button`
 function Button({ children, ...rest }){
     return <StyledButton {...rest}>{children}</StyledButton>;
 }
+
+Button.defaultProps = {
+    color: 'blue'
+};
 
 export default Button;
