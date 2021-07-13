@@ -19,8 +19,8 @@ const StyledButton = styled.button`
     font-size: 1rem;
 
     /* 색상 */
-    ${props => {
-        const selected = props.theme.palette[props.color];
+    ${({theme, color }) => {
+        const selected = theme.palette[color];
         return css`
             background: ${selected};
             &:hover {
@@ -38,8 +38,8 @@ const StyledButton = styled.button`
     }
 `;
 
-function Button({ children, ...rest }){
-    return <StyledButton {...rest}>{children}</StyledButton>;
+function Button({ children, color, ...rest }){
+    return <StyledButton color={color} {...rest}>{children}</StyledButton>;
 }
 
 Button.defaultProps = {
