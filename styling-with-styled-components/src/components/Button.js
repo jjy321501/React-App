@@ -3,39 +3,53 @@ import styled, { css } from 'styled-components';
 import { darken, lighten } from 'polished';
 
 const colorStyles = css`
-    ${({ theme, color }) => {
-        const selected = theme.palette[color];
-        return css`
-            background: ${selected};
-            &:hover {
-                background: ${lighten(0.1, selected)};
-            }
-            &:active {
-                background: ${darken(0.1, selected)};
-            }
-        `;
-    }}
+ ${({ theme, color }) => {
+   const selected = theme.palette[color];
+   return css`
+    background: ${selected};
+    &:hover {
+      background: ${lighten(0.1, selected)};
+    }
+    &:active {
+      background: ${darken(0.1, selected)};
+    }
+  `;
+ }}
+`;
+const AppBlock = styled.div`
+  width: 512px;
+  margin: 0 auto;
+  margin-top: 4rem;
+  border: 1px solid black;
+  padding: 1rem;
 `;
 
+const ButtonGroup = styled.div`
+  & + & {
+    margin-top: 1rem;
+  }
+`;
+
+const sizes = {
+  large: {
+    height: '3rem',
+    fontSize: '1.25rem'
+  },
+  medium: {
+    height: '2.25rem',
+    fontSize: '1rem'
+  },
+  small: {
+    height: '1.75rem',
+    fontSize: '0.875rem'
+  }
+};
+
 const sizeStyles = css`
-    ${props =>
-        props.size === 'large' &&
-        css`
-            height: 3rem;
-            font-size: 1.25rem;
-        `}
-    ${props => 
-        props.size === 'medium' &&
-        css`
-            height: 2.25rem;
-            font-size: 1rem;
-        `}
-    ${props =>
-        props.size === 'small' &&
-        css`
-            height: 1.75rem;
-            font-size: 0.875rem;
-        `}
+  ${({ size }) => css`
+    height: ${sizes[size].height};
+    font-size: ${sizes[size].fontSize};
+  `}
 `;
 
 const StyledButton = styled.button`
@@ -71,7 +85,8 @@ function Button({ children, color, size, ...rest }){
 }
 
 Button.defaultProps = {
-    color: 'blue'
+    color: 'blue',
+    size: 'medium'
 };
 
 export default Button;
