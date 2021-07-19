@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import Button from './components/Button';
+import Dialog from './components/Dialog';
 
 const AppBlock = styled.div`
   width: 512px;
@@ -74,6 +75,13 @@ function App() {
           </Button>
         </ButtonGroup>
       </AppBlock>
+      <Dialog
+        title="정말로 삭제하시겠습니까?"
+        confirmText="삭제"
+        cancelText="취소"
+      >
+        데이터를 정말로 삭제하시겠습니까?
+      </Dialog>
     </ThemeProvider>
   );
 }
