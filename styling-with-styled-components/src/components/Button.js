@@ -57,7 +57,7 @@ const fullWidthStyle = css`
       width: 100%;
       justify-content: center;
       & + & {
-        margin-left: 0;
+        /*margin-left: 0;*/
         margin-top: 1rem;
       }
     `}
