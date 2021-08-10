@@ -31,7 +31,7 @@ const TodoItemBlock = styled.div`
 const CheckCircle = styled.div`
     width: 32px;
     height: 32px;
-    border-raius: 16px;
+    border-radius: 16px;
     border: 1px solid #ced4da;
     font-size: 24px;
     display: flex;
@@ -46,6 +46,7 @@ const CheckCircle = styled.div`
         color: #38d9a9;
     `}
 `;
+
 
 const Text = styled.div`
     flex: 1;
@@ -75,4 +76,4 @@ function TodoItem({ id, done, text }) {
     );
 }
 
-export default TodoItem;
+export default React.memo(TodoItem);
