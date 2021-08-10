@@ -43,7 +43,7 @@ const CheckCircle = styled.div`
     props.done &&
     css`
         border: 1px solid #38d9a9;
-        color: #39d9a9;
+        color: #38d9a9;
     `}
 `;
 
