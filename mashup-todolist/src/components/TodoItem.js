@@ -10,10 +10,10 @@ const Remove = styled.div`
     color: #dee2e6;
     font-size: 24px;
     cursor: pointer;
+    opacity: 0;
     &:hover {
         color: #ff6b6b;
     }
-    display: none;
 `;
 
 const TodoItemBlock = styled.div`
@@ -23,7 +23,7 @@ const TodoItemBlock = styled.div`
     padding-bottom: 12px;
     &:hover {
         ${Remove} {
-            display: initial;
+            opacity: 1;
         }
     }
 `;
