@@ -24,7 +24,7 @@ function Users() {
            setLoading(false);
         };
 
-        fechUsers();
+        fetchUsers();
     },[]);
     
     if (loading) return <div>로딩중..</div>;
