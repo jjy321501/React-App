@@ -1,3 +1,20 @@
+# React To-do List
+-----
+
+## 개요
+- 리액트 프레임워크를 활용해 구현한 SPA 투두 리스트
+- 2021.09 ~ 2021.10
+
+## 개발환경
+- HTML / CSS / Vanila JS
+
+## 주요 기능
+### 할 일 추가
+
+### 할 일 삭제
+
+## 주요 실행 화면
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
