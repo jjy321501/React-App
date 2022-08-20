@@ -9,7 +9,37 @@
 - HTML / CSS / Vanila JS / React
 
 ## 디렉토리 트리
-
+```
+📦mashup-todolist
+┣ 📂public
+┃ ┣ 📜favicon.ico
+┃ ┣ 📜index.html
+┃ ┣ 📜logo192.png
+┃ ┣ 📜logo512.png
+┃ ┣ 📜manifest.json
+┃ ┗ 📜robots.txt
+┣ 📂src
+┃ ┣ 📂components
+┃ ┃ ┣ 📜TodoCreate.js
+┃ ┃ ┣ 📜TodoHead.js
+┃ ┃ ┣ 📜TodoItem.js
+┃ ┃ ┣ 📜TodoList.js
+┃ ┃ ┗ 📜TodoTemplate.js
+┃ ┣ 📜App.css
+┃ ┣ 📜App.js
+┃ ┣ 📜App.test.js
+┃ ┣ 📜TodoContext.js
+┃ ┣ 📜TodoProvider.js
+┃ ┣ 📜index.css
+┃ ┣ 📜index.js
+┃ ┣ 📜logo.svg
+┃ ┣ 📜reportWebVitals.js
+┃ ┗ 📜setupTests.js
+┣ 📜.gitignore
+┣ 📜README.md
+┣ 📜package.json
+┗ 📜yarn.lock
+```
 
 ## 주요 기능
 ### 할 일 추가
