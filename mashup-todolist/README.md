@@ -4,6 +4,7 @@
 ## 개요
 - 리액트로 구현한 SPA 투두 리스트
 - 2021.09 ~ 2021.10
+- 호스팅 URL [https://jjy-mustdolist.web.app/]
 
 ## 개발환경
 - HTML / CSS / Vanila JS / React
@@ -257,5 +258,7 @@ export function useTodoNextId() {
 - Context를 생성해서 Provider로 자식컴포넌트를 감싸서 값을 전달해준다.
 - 자주 사용하는 코드의 반복을 줄이고 재사용성을 높힌다.
 
-## 주요 실행 화면
+## 실행 화면
+![image](https://user-images.githubusercontent.com/72749783/186482122-207d1c4f-e639-43a1-8610-33e08e7210fc.png)
 
+- 한 일에 대해 체크 표시 할 수 있고 남은 할 일 갯수를 출력하는 투두 리스트
